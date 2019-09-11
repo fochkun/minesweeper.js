@@ -1,3 +1,4 @@
+import { GameScene } from "./game-scene";
 
 export const SceneNames={
     main:'main',
@@ -8,8 +9,8 @@ export const SceneNames={
 
 export class SceneManager {
     private static _instance:SceneManager;
-    private _sceneList:Array<any>=[];
-    private _currentScene:any;
+    private _sceneList:Array<GameScene>=[];
+    private _currentScene:GameScene;
     constructor(){
         if (SceneManager._instance==undefined){
             SceneManager._instance=this;

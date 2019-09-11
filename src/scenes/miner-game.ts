@@ -1,8 +1,8 @@
 import { SceneNames } from "./scene-manager";
 import { GameScene } from "./game-scene";
 
-export class PauseScene extends GameScene {
+export class MinerScene extends GameScene {
     constructor(){
-        super(SceneNames.pause);
+        super(SceneNames.game);
     }
 }
