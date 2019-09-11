@@ -11,7 +11,7 @@ const paths = {
 module.exports = {
     context: paths.src,
     entry: {
-        app: './app'
+        app: './index.ts'
     },
     output: {
         filename: '[name].bundle.js',
@@ -22,7 +22,6 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
-                exclude: /node_modules/,
             },
         ]
     },
