@@ -34,7 +34,7 @@ module.exports = {
             template: './index.html'
         }),
         new CopyPlugin([
-            { from: 'src/assets', to: 'assets' },
+            { from: './assets', to: 'assets' },
         ]),
     ]
 };

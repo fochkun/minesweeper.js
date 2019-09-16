@@ -15,6 +15,6 @@ export class MainScene extends GameScene {
     }
 
     render(delta){
-        console.log('render main scene ',delta);
+        // console.log('render main scene ',delta);
     }
 }
