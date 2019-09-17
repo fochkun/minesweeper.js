@@ -9,12 +9,8 @@ export class MainScene extends GameScene {
         this._startButton=new StartButton();
         this.addChild(this._startButton);
         this._startButton.on('pointerup',()=>{
-            console.log('button start');
             SceneManager.instance.switch(SceneNames.game);
         })
     }
 
-    render(delta){
-        // console.log('render main scene ',delta);
-    }
 }
