@@ -1,6 +1,6 @@
 import { GameScene } from "./game-scene";
 import { SceneNames, SceneManager } from "./scene-manager";
-import { gameWidth, gameHeight } from "../enviroment/constants";
+import { GAME_WIDTH, GAME_HEIGHT } from "../enviroment/constants";
 import { StartButton } from "../components/buttons/button-start";
 
 export class EndGameMenu extends GameScene {
@@ -10,7 +10,7 @@ export class EndGameMenu extends GameScene {
         const backGround: PIXI.Graphics = new PIXI.Graphics();
         backGround.beginFill(0xc0c0c0);
         backGround.lineStyle(3, 0x808080, 1);
-        backGround.drawRect(0, 0, gameWidth, gameHeight);
+        backGround.drawRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
         backGround.endFill();
         this.addChild(backGround);
 

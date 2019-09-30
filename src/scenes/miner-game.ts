@@ -1,6 +1,6 @@
 import { SceneNames, SceneManager } from "./scene-manager";
 import { GameScene } from "./game-scene";
-import { gameWidth, gameHeight } from "../enviroment/constants";
+import { GAME_WIDTH, GAME_HEIGHT } from "../enviroment/constants";
 import { CellData, Cell } from "../components/cell";
 import { StartButton } from "../components/buttons/button-start";
 import { EndGameMenu } from "./end-game-menu";
@@ -11,9 +11,9 @@ export type Tuple<TItem, TLength extends number> = [TItem, ...TItem[]] & { lengt
 
 export class MinerScene extends GameScene {
 
-    private poleWidth = 9;
-    private poleHeight = 9;
-    private mines = 10;
+    private readonly poleWidth = 9;
+    private readonly poleHeight = 9;
+    private readonly mines = 10;
     private poleData: Array<Array<CellData>>;
     private cellContainer: PIXI.Container;
     private cells: Array<Array<Cell>>;
@@ -23,7 +23,7 @@ export class MinerScene extends GameScene {
         const backGround: PIXI.Graphics = new PIXI.Graphics();
         backGround.beginFill(0xc0c0c0);
         backGround.lineStyle(3, 0x808080, 1);
-        backGround.drawRect(0, 0, gameWidth, gameHeight);
+        backGround.drawRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
         backGround.endFill();
         this.addChild(backGround);
         this.cellContainer = new PIXI.Container();
