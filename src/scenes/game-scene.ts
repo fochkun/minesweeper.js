@@ -28,7 +28,6 @@ export abstract class GameScene extends PIXI.Container {
     }
     public stop() {
         this.visible = false;
-
     }
 
     public render(delta: number) {

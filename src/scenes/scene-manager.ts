@@ -8,21 +8,13 @@ export const SceneNames = {
 }
 
 export class SceneManager {
-    // private static _instance: SceneManager;
     private _sceneList: Array<GameScene> = [];
     private _currentScene: GameScene;
     private _game: PIXI.Application;
+
     constructor() {
-        // if (SceneManager._instance == undefined) {
-        //     SceneManager._instance = this;
-        // }
     }
-    // public static get instance(): SceneManager {
-    //     if (SceneManager._instance == undefined) {
-    //         return new SceneManager();
-    //     }
-    //     return SceneManager._instance;
-    // }
+   
 
     public getScene<T extends GameScene = GameScene>(key: string): T {
         return this._sceneList.find(value => value.key == key) as T;
@@ -51,7 +43,7 @@ export class SceneManager {
         }
     }
 
-    private render(delta) {
+    private render(delta:number) {
         this._currentScene.render(delta);
     }
 
