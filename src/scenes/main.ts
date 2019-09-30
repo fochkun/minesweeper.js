@@ -21,7 +21,6 @@ export class MainScene extends GameScene {
         this._startButton.off('pointerup', this.switchScene);
     }
     private switchScene = () => {
-        console.log('switch scene,', this._sceneManager);
         this._sceneManager.switch(SceneNames.game);
     }
 

@@ -13,7 +13,6 @@ export abstract class GameScene extends PIXI.Container {
 
     public set sceneManager(value: SceneManager) {
         this._sceneManager = this._sceneManager == undefined ? value : this._sceneManager;
-        console.log('set scene manager for',this._key,' sceneManager is:',this._sceneManager);
     }
 
     public pause() {

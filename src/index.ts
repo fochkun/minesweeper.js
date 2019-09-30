@@ -39,7 +39,6 @@ for (let index = 0; index < 9; index++) {
 }
 
 loader.onProgress.add((event) => {
-    console.log('loading process', event);
     loadingText.text = 'Загрузка: ' + Math.round(event.progress) + '%'
 });
 loader.onLoad.add((event) => {
@@ -51,7 +50,6 @@ loader.onError.add((error) => {
 });
 loader.onComplete.add((data) => {
 
-    console.log('data loaded', data);
     const sceneManager=new SceneManager();
     sceneManager.game = app;
 
@@ -61,7 +59,6 @@ loader.onComplete.add((data) => {
         .add(new EndGameMenu());
 
     app.stage.removeChild(loaderContainer);
-    console.log('loaded', PIXI.loader);
 });
 
 loader.load()
