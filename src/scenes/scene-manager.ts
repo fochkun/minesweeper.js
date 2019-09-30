@@ -8,27 +8,28 @@ export const SceneNames = {
 }
 
 export class SceneManager {
-    private static _instance: SceneManager;
+    // private static _instance: SceneManager;
     private _sceneList: Array<GameScene> = [];
     private _currentScene: GameScene;
     private _game: PIXI.Application;
     constructor() {
-        if (SceneManager._instance == undefined) {
-            SceneManager._instance = this;
-        }
+        // if (SceneManager._instance == undefined) {
+        //     SceneManager._instance = this;
+        // }
     }
-    public static get instance(): SceneManager {
-        if (SceneManager._instance == undefined) {
-            return new SceneManager();
-        }
-        return SceneManager._instance;
+    // public static get instance(): SceneManager {
+    //     if (SceneManager._instance == undefined) {
+    //         return new SceneManager();
+    //     }
+    //     return SceneManager._instance;
+    // }
+
+    public getScene<T extends GameScene = GameScene>(key: string): T {
+        return this._sceneList.find(value => value.key == key) as T;
     }
 
-    getScene(key: string): GameScene {
-        return this._sceneList.find(value => value.key == key);
-    }
-
-    public add(scene): SceneManager {
+    public add(scene:GameScene): SceneManager {
+        scene.sceneManager=this;
         if (this._sceneList.length == 0) {
             this._currentScene = scene;
             scene.start();
@@ -54,7 +55,22 @@ export class SceneManager {
         this._currentScene.render(delta);
     }
 
-    public switch(key): GameScene {
+    public pause(key:string){
+        const scene=this.getScene(key);
+        if (scene){
+            scene.pause();
+        }
+    }
+
+
+    public resume(key:string){
+        const scene=this.getScene(key);
+        if (scene){
+            scene.resume();
+        }
+    }
+
+    public switch<T extends GameScene = GameScene>(key): T {
         let scene = this.getScene(key);
         if (scene) {
             if (this._currentScene) {
@@ -62,7 +78,7 @@ export class SceneManager {
             }
             this._currentScene = scene;
             scene.start();
-            return scene;
+            return scene as T;
         } else {
             throw new Error('cant switch scene');
         }

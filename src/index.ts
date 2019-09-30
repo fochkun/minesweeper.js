@@ -52,9 +52,10 @@ loader.onError.add((error) => {
 loader.onComplete.add((data) => {
 
     console.log('data loaded', data);
-    SceneManager.instance.game = app;
+    const sceneManager=new SceneManager();
+    sceneManager.game = app;
 
-    SceneManager.instance.add(new MainScene())
+    sceneManager.add(new MainScene())
         .add(new MinerScene())
         .add(new PauseScene())
         .add(new EndGameMenu());

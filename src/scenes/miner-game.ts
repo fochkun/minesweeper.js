@@ -32,9 +32,13 @@ export class MinerScene extends GameScene {
         const buttonPause=new StartButton();
         buttonPause.text='меню';
         buttonPause.on('click',()=>{
-            SceneManager.instance.getScene(SceneNames.pause).visible=true;
+            this.pauseClick();
         })
         this.addChild(buttonPause);
+    }
+
+    private pauseClick(){
+        this._sceneManager.resume(SceneNames.pause);
     }
 
     start() {
@@ -120,10 +124,10 @@ export class MinerScene extends GameScene {
         }
         if (lose) {
             console.log('lose');
-            (SceneManager.instance.switch(SceneNames.endGame) as EndGameMenu).setWin(false);
+            this._sceneManager.switch<EndGameMenu>(SceneNames.endGame).setWin(false);
         } else if (win) {
             console.log('win');
-            (SceneManager.instance.switch(SceneNames.endGame) as EndGameMenu).setWin(true);
+            this._sceneManager.switch<EndGameMenu>(SceneNames.endGame).setWin(true);
         }
     }
 
@@ -156,11 +160,12 @@ export class MinerScene extends GameScene {
             if (cell && !cell.mine) {
                 cell.mine = true;
                 --minesRemaining;
+
+                // add digits to neigbor cells
                 addDigit(result, { x: minePosition.x - 1, y: minePosition.y - 1 });
                 addDigit(result, { x: minePosition.x, y: minePosition.y - 1 });
                 addDigit(result, { x: minePosition.x + 1, y: minePosition.y - 1 });
                 addDigit(result, { x: minePosition.x - 1, y: minePosition.y });
-                // addDigit(result,{x:minePosition.x,y:minePosition.y});
                 addDigit(result, { x: minePosition.x + 1, y: minePosition.y });
                 addDigit(result, { x: minePosition.x - 1, y: minePosition.y + 1 });
                 addDigit(result, { x: minePosition.x, y: minePosition.y + 1 });

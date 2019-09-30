@@ -17,8 +17,9 @@ export class PauseScene extends GameScene {
         buttonHome.text='выход';
         buttonHome.y=-100;
         buttonHome.on('click',()=>{
-            this.visible=false;
-            SceneManager.instance.switch(SceneNames.main);
+            // this.visible=false;
+            this._sceneManager.pause(this.key);
+            this._sceneManager.switch(SceneNames.main);
         })
         this.addChild(buttonHome);
 
